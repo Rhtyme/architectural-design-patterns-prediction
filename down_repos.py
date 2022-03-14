@@ -82,7 +82,7 @@ def download_repos(folder_to, search_url):
             if failed_repos_counter >= failed_repos_break_limit:
                 break
         else:
-            if counter_repos >= total_count
+            if counter_repos >= total_count:
                 break
             continue
         break
