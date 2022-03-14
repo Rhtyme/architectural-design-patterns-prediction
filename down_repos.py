@@ -3,6 +3,7 @@ import re
 import os
 import pathlib
 import zipfile
+import time
 
 mvvm_keyword = 'mvvm'
 mvp_keyword = 'mvp'
@@ -56,7 +57,6 @@ def download_repos(folder_to, search_url):
     pattern_folder = os.path.join(os.getcwd(), folder_to)
     failed_repos_break_limit = 40
 
-    tmp_limit_counter_repos = 40
     for i in range(1, 1000):
         final_search_url = search_url + str(i)
         search_page = requests.get(final_search_url)
@@ -75,13 +75,14 @@ def download_repos(folder_to, search_url):
             print('downloading repo# ', ((i - 1) * current_page_count + inner_page_counter), ' out of# ', total_count, ', repo_name: ',
                   repo_url)
             succeed = download_repo(pattern_folder, repo_url, default_branch)
+            time.sleep(1)
             if not succeed:
                 failed_repos_counter += 1
                 print('can\'t downloaded repo: ', repo_url)
             if failed_repos_counter >= failed_repos_break_limit:
                 break
         else:
-            if counter_repos >= total_count or counter_repos >= tmp_limit_counter_repos:
+            if counter_repos >= total_count
                 break
             continue
         break
