@@ -89,6 +89,7 @@ def download_repos(folder_to, search_url):
         else:
             fail_validate_counter += 1
             page_counter -= 1
+
             if failed_repos_counter >= fail_validate_limit:
                 print('too many failures on validating dict, tried ', failed_repos_counter, ' times')
                 break
