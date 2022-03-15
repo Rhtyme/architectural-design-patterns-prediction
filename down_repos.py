@@ -50,21 +50,53 @@ def download_repo(folder_to, repo_url, default_branch):
     return True
 
 
+def validate_dict(repos_dict):
+    try:
+        total_count = repos_dict['total_count']
+        current_page_count = len(repos_dict['items'])
+        if total_count > 0 and current_page_count > 0:
+            return True
+    except Exception as e:
+        print('can\'t validate repos: ', e)
+        return False
+    return False
+
+
 def download_repos(folder_to, search_url):
     total_count = -1
     counter_repos = 0
     failed_repos_counter = 0
     pattern_folder = os.path.join(os.getcwd(), folder_to)
     failed_repos_break_limit = 40
+    # when the program fails to validate the repos dictionary (from request),
+    # the below variable will be increased every time, and once succeeded, zero will be set as a value
+    fail_validate_counter = 0
+    # when the value of fail_validate_counter reaches the value of fail_validate_limit, then no promise for luck,
+    # the program will be terminated
+    fail_validate_limit = 10
 
-    for i in range(1, 1000):
-        final_search_url = search_url + str(i)
+    page_counter = 0
+
+    for i in range(1, 10000):
+        page_counter += 1
+        final_search_url = search_url + str(page_counter)
         search_page = requests.get(final_search_url)
         repos_dict = search_page.json()
+
+        validated = validate_dict(repos_dict)
+        if validated:
+            fail_validate_counter = 0
+        else:
+            fail_validate_counter += 1
+            page_counter -= 1
+            if failed_repos_counter >= fail_validate_limit:
+                print('too many failures on validating dict, tried ', failed_repos_counter, ' times')
+                break
+            else:
+                continue
+
         total_count = repos_dict['total_count']
         current_page_count = len(repos_dict['items'])
-        if current_page_count <= 0:
-            break
         counter_repos += current_page_count
         inner_page_counter = 0
         for repo_item in repos_dict['items']:
@@ -72,10 +104,11 @@ def download_repos(folder_to, search_url):
             default_branch = repo_item['default_branch']
             inner_page_counter += 1
 
-            print('downloading repo# ', ((i - 1) * current_page_count + inner_page_counter), ' out of# ', total_count, ', repo_name: ',
+            print('downloading repo# ', ((page_counter - 1) * current_page_count + inner_page_counter), ' out of# ', total_count,
+                  ', repo_name: ',
                   repo_url)
             succeed = download_repo(pattern_folder, repo_url, default_branch)
-            time.sleep(1)
+            time.sleep(2)
             if not succeed:
                 failed_repos_counter += 1
                 print('can\'t downloaded repo: ', repo_url)
