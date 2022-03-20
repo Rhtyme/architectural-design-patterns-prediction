@@ -17,7 +17,7 @@ def extract_ck(from_folder, to_folder):
 
     to_folder_path.mkdir(parents=True, exist_ok=True)
 
-    arg_ck_jar_path = './ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
+    arg_ck_jar_path = 'ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
     arg_true = 'true'
     arg_zero = '0'
     java_cmd = 'java'
