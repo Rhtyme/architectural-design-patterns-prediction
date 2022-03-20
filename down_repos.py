@@ -5,6 +5,8 @@ import pathlib
 import zipfile
 import time
 
+import uuid
+
 mvvm_keyword = 'mvvm'
 mvp_keyword = 'mvp'
 
@@ -42,6 +44,7 @@ def download_repo(folder_to, repo_url, default_branch):
         repo_name = get_filename_from_cd(repo_request.headers.get('content-disposition'))
         if not repo_name:
             raise Exception('repo name can not be fetched')
+        repo_name = uuid.uuid4().hex + repo_name
         repo_zipfile_full_path = os.path.join(folder_to, repo_name)
         open(repo_zipfile_full_path, 'wb').write(repo_request.content)
     except Exception as e:
