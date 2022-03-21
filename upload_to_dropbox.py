@@ -13,7 +13,7 @@ class TransferData:
             dbx.files_upload(f.read(), file_to)
 
 def main():
-    access_token = 'sl.BEON2PvGqETOASoSOCSDXlzkWJzfGnWvFhr_Y9Q4UK1yjE76jVkfTVvzsFZ4GA0g4Nprb2Y5yecugg7h235XanUlsyUncN7hlxxhCJx8QLrEgt0aoRSzM-MgAohGgSDZ45Re6mpL18n2'
+    access_token = 'sl.BEPsKJFfKVUH6jqXNvNHK6l-PRMNDCJKA9Q872eKGBZI2JPe0s5up8n8HMe9c7RX6HALlIj5EeEQRdE2yt73_k4IxPrsZwTtQXv0lDTzqUG_qfhtsll8IO6nFYXm5KgxLHOqC7DT9jfb'
     transferData = TransferData(access_token)
 
     file_from1 = 'mvp_ck.zip'
