@@ -16,11 +16,15 @@ def main():
     access_token = 'sl.BEON2PvGqETOASoSOCSDXlzkWJzfGnWvFhr_Y9Q4UK1yjE76jVkfTVvzsFZ4GA0g4Nprb2Y5yecugg7h235XanUlsyUncN7hlxxhCJx8QLrEgt0aoRSzM-MgAohGgSDZ45Re6mpL18n2'
     transferData = TransferData(access_token)
 
-    file_from = 'ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
+    file_from1 = 'mvp_ck.zip'
+    file_from2 = 'mvvm_ck.zip'
     file_to = '/test/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'  # The full path to upload the file to, including the file name
+    file_to1 = '/test/mvp_ck.zip'
+    file_to2 = '/test/mvvm_ck.zip'
 
     # API v2
-    transferData.upload_file(file_from, file_to)
+    transferData.upload_file(file_from1, file_to1)
+    transferData.upload_file(file_from2, file_to2)
 
 if __name__ == '__main__':
     main()
