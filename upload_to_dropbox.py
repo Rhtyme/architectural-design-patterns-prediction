@@ -13,7 +13,7 @@ class TransferData:
             dbx.files_upload(f.read(), file_to)
 
 def main():
-    access_token = 'sl.BEPsKJFfKVUH6jqXNvNHK6l-PRMNDCJKA9Q872eKGBZI2JPe0s5up8n8HMe9c7RX6HALlIj5EeEQRdE2yt73_k4IxPrsZwTtQXv0lDTzqUG_qfhtsll8IO6nFYXm5KgxLHOqC7DT9jfb'
+    access_token = 'sl.BENzQhthF2Q7ivQnGc3Ybs-7ZmKklL5dazXu2gyr6aa3LRAadpslQHvWob8riqUKtnzeT99xg5EDWp0xW-qx7ZrH2CfXmcKeFRq_0rTiVwWLomwfTZYHfb6qddZxVBcve7BPz-XFW4_5'
     transferData = TransferData(access_token)
 
     file_from = 'ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
