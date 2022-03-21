@@ -13,11 +13,11 @@ class TransferData:
             dbx.files_upload(f.read(), file_to)
 
 def main():
-    access_token = 'sl.BENzQhthF2Q7ivQnGc3Ybs-7ZmKklL5dazXu2gyr6aa3LRAadpslQHvWob8riqUKtnzeT99xg5EDWp0xW-qx7ZrH2CfXmcKeFRq_0rTiVwWLomwfTZYHfb6qddZxVBcve7BPz-XFW4_5'
+    access_token = 'sl.BEN2lwXCxakK8ljodR7f7I4v5n3WLEmuwQ3K9Ef-CJpX0v1KvJ5EtMdBgqdkm_9MAyZLevN305oicLIAl3qflN0KqMIQ21KAQXLTWnG1mZPio7oed-xOQirUy7VZtUmVSSJuVfJEmNJo'
     transferData = TransferData(access_token)
 
     file_from = 'ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
-    file_to = '/test/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'  # The full path to upload the file to, including the file name
+    file_to = '/test/ck-0.7.1-SNAPSHOT-jar-with-dependencies2.jar'  # The full path to upload the file to, including the file name
 
     # API v2
     transferData.upload_file(file_from, file_to)
