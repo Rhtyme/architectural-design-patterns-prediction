@@ -1,3 +1,8 @@
 requests==2.27.1
 pygithub
 dropbox
+interpret
+catboost
+pandas
+numpy
+sklearn
